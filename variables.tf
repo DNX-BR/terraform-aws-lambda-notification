@@ -17,7 +17,7 @@ variable "endpoint_type" {
 
     validation {
         condition     = contains(["teams", "google", "slack"], var.endpoint_type)
-        error_message = "Valid values for var: endpoint_type are (teams, google, slack)"
+        error_message = "Valid values for var: endpoint_type are (teams, google, slack)."
     } 
 }
 

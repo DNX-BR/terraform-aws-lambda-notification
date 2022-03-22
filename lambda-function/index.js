@@ -22,7 +22,7 @@ exports.handler = async (event) => {
             } else {
                 await alarms.SendMessageSlack(event);
             }
-            //Budget
+        //Budget
         } else {
             if (process.env.ENDPOINT_TYPE === 'teams') {
                 await budget.SendMessageTeams(event)
