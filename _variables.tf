@@ -32,11 +32,11 @@ variable sh_enabled {
     type        = bool
 }
 
-variable "allow_from_account_ids" {
-  type        = list(string)
-  default     = []
-  description = "List of accounts to allow publishing to SNS"
-}
+# variable "allow_from_account_ids" {
+#   type        = list(string)
+#   default     = []
+#   description = "List of accounts to allow publishing to SNS"
+# }
 
 variable "sns_topic_name" {
     description = "SNS Topic Name (optional - Creates SNS Topic)"
