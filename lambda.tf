@@ -31,7 +31,7 @@ resource "aws_lambda_function" "lambda_notification" {
       WEBHOOK_GOOGLE           = var.webhook_google,
       WEBHOOK_TEAMS            = var.webhook_teams,
       SLACK_CHANNEL            = var.slack.channel,
-      SNS_TOPIC_NAME_ALARM     = var.sns_topic_name_alarm,
+      SNS_TOPIC_NAME_ALARM     = var.sns_topic_name,
       PRINT_EVENT              = var.print_event,
       CLIENT_NAME              = var.client.name,
       CLIENT_EMAIL             = var.client.email,
