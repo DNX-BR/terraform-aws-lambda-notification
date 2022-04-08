@@ -17,20 +17,20 @@ variable org_name {
     type        = string
 }
 
-variable ecr_enabled {
-    description = "Boolean to indicate wether or not send ECR notifications"
-    type        = bool
-}
+# variable ecr_enabled {
+#     description = "Boolean to indicate wether or not send ECR notifications"
+#     type        = bool
+# }
 
-variable gd_enabled {
-    description = "Boolean to indicate wether or not send GuardDuty notifications"
-    type        = bool
-}
+# variable gd_enabled {
+#     description = "Boolean to indicate wether or not send GuardDuty notifications"
+#     type        = bool
+# }
 
-variable sh_enabled {
-    description = "Boolean to indicate wether or not send Security Hub notifications"
-    type        = bool
-}
+# variable sh_enabled {
+#     description = "Boolean to indicate wether or not send Security Hub notifications"
+#     type        = bool
+# }
 
 # variable "allow_from_account_ids" {
 #   type        = list(string)
