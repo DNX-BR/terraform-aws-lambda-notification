@@ -48,7 +48,7 @@ No modules.
 | <a name="input_account_name"></a> [account\_name](#input\_account\_name) | Name of the current account | `string` | n/a | yes |
 | <a name="input_audit_event_bus_arn"></a> [audit\_event\_bus\_arn](#input\_audit\_event\_bus\_arn) | ARN of the CloudWatch bus created at audit account | `string` | `""` | no |
 | <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | ID of the current account | `string` | n/a | yes |
-| <a name="input_endpoint_type"></a> [endpoint\_type](#input\_endpoint\_type) | Channel where notifications should be sent. | `string` | n/a | yes |
+| <a name="input_endpoint_type"></a> [endpoint\_type](#input\_endpoint\_type) | Channel where notifications should be sent. | `string` | `"slack"` | no |
 | <a name="input_org_id"></a> [org\_id](#input\_org\_id) | Organization ID | `string` | n/a | yes |
 | <a name="input_org_name"></a> [org\_name](#input\_org\_name) | Organization name | `string` | n/a | yes |
 | <a name="input_slack_channel"></a> [slack\_channel](#input\_slack\_channel) | Slack channel to send notifications | `string` | `""` | no |

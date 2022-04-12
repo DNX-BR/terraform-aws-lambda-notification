@@ -39,6 +39,7 @@ variable "webhook_teams" {
 variable "endpoint_type" {
     description = "Channel where notifications should be sent."
     type        = string
+    default     = "slack"
 
     validation {
         condition     = contains(["teams", "google", "slack"], var.endpoint_type)
