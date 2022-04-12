@@ -30,31 +30,22 @@ resource "aws_lambda_function" "lambda_notification" {
       ENDPOINT_TYPE            = var.endpoint_type,
       WEBHOOK_GOOGLE           = var.webhook_google,
       WEBHOOK_TEAMS            = var.webhook_teams,
-      SLACK_CHANNEL            = var.slack.channel,
+      SLACK_CHANNEL            = var.slack_channel,
       SNS_TOPIC_NAME_ALARM     = var.sns_topic_name,
-      PRINT_EVENT              = var.print_event,
-      CLIENT_NAME              = var.client.name,
-      CLIENT_EMAIL             = var.client.email,
-      OSTICKET_API_KEY         = var.ticket_api,
-      SLACK_TOKEN              = var.slack.token,
-      SNS_TOPIC_NAME_ALARM_CSI = var.sns_topic_name_alarm_csi
+      # CLIENT_NAME              = var.client.name,
+      # CLIENT_EMAIL             = var.client.email,
+      # OSTICKET_API_KEY         = var.ticket_api,
+      SLACK_TOKEN              = var.slack_token,
+      # SNS_TOPIC_NAME_ALARM_CSI = var.sns_topic_name_alarm_csi
     }
   }
 }
-
-# resource "random_string" "random" {
-#   count  = var.account_name == "audit" ? 1 : 0
-#   length  = 8
-#   special = false
-#   upper   = false
-#   number  = false
-# }
 
 # criando uma role para a função lambda na conta audit
 resource "aws_iam_role" "lambda_notification" {
   count  = var.account_name == "audit" ? 1 : 0
 
-  name = "lambda-notification-role"
+  name   = "lambda-notification-role"
 
   assume_role_policy = <<EOF
 {
@@ -73,14 +64,13 @@ resource "aws_iam_role" "lambda_notification" {
 EOF
 }
 
-
 # adicionando uma política à role
 resource "aws_iam_role_policy" "lambda_notification" {
   count  = var.account_name == "audit" ? 1 : 0
 
-  name = "lambda-notification-policy" 
+  name   = "lambda-notification-policy" 
 
-  role = aws_iam_role.lambda_notification[0].name
+  role   = aws_iam_role.lambda_notification[0].name
 
   policy = <<EOF
 {

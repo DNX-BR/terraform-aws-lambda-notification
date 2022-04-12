@@ -40,7 +40,7 @@ async function GetMessage (event) {
                 {
                   type: 'Image',
                   style: 'Person',
-                  url: 'https://raw.githubusercontent.com/aws-samples/amazon-securityhub-to-slack/master/images/gd_logo.png',
+                  url: 'https://www.checkpoint.com/wp-content/uploads/aws-hub-logo-text.png',
                   size: 'Small'
                 }
               ],
@@ -103,7 +103,7 @@ async function GetMessage (event) {
         header: {
           title: event.detail.findings[0].Types[0],
           subtitle: `AWS SecurityHub finding in ${event.detail.findings[0].Resources[0].Region} for Acct: ${event.detail.findings[0].AwsAccountId}`,
-          imageUrl: 'https://raw.githubusercontent.com/aws-samples/amazon-securityhub-to-slack/master/images/gd_logo.png'
+          imageUrl: 'https://www.checkpoint.com/wp-content/uploads/aws-hub-logo-text.png'
         },
         sections: [
           {

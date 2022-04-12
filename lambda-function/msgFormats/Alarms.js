@@ -3,9 +3,14 @@ async function GetMessage (event) {
   switch (event.target) {
     case 'teams':
       msg = [{
+        name: 'Account',
+        value: event.AWSAccountId
+      }, 
+      {
         name: 'Alarm Name',
         value: event.AlarmName
-      }, {
+      }, 
+      {
         name: 'Alarm Description',
         value: event.AlarmDescription
       },
@@ -33,6 +38,12 @@ async function GetMessage (event) {
         sections: [
           {
             widgets: [
+              {
+                keyValue: {
+                  topLabel: 'Account',
+                  content: event.AWSAccountId
+                }
+              },
               {
                 keyValue: {
                   topLabel: 'Reason',
@@ -82,6 +93,7 @@ async function GetMessage (event) {
           {
             color: event.color,
             fields: [
+              { title: 'Account', value: event.AWSAccountId, short: false},
               { title: 'Alarm Name', value: event.AlarmName, short: true },
               { title: 'Alarm Description', value: event.AlarmDescription, short: false },
               {

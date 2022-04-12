@@ -1,7 +1,7 @@
 # criação do tópico
 resource "aws_sns_topic" "notifications" {
   count = var.account_name == "audit" ? 1 : 0
-  name  = var.sns_topic_name_alarm
+  name  = var.sns_topic_name
 }
 
 # subscrição da função nesse tópico
@@ -12,7 +12,7 @@ resource "aws_sns_topic_subscription" "notification_target" {
   endpoint  = aws_lambda_function.lambda_notification[0].arn
 }
 
-# permissão pro topico invocar a função
+# permissão pro tópico invocar a função
 resource "aws_lambda_permission" "with_sns" {
     count         = var.account_name == "audit" ? 1 : 0
     statement_id  = "AllowExecutionFromSNS"
@@ -22,28 +22,30 @@ resource "aws_lambda_permission" "with_sns" {
     source_arn    = aws_sns_topic.notifications[0].arn
 }
 
-# politica do topico sns
+# política do tópico sns
 resource "aws_sns_topic_policy" "topic_notifications" {
   count  = var.account_name == "audit" ? 1 : 0
   arn    = aws_sns_topic.notifications[0].arn
   policy = data.aws_iam_policy_document.topic_notifications[0].json
 }
 
-# documento da politica
+# documento da política
 data "aws_iam_policy_document" "topic_notifications" {
   count  = var.account_name == "audit" ? 1 : 0
 
   statement {
-    sid = "SNSBudgetPublishingPermissions"
+    sid = "PublishingPermissions"
 
     actions = [
       "SNS:Publish",
       "SNS:Receive"
     ]
 
+    effect = "Allow"
+    
     principals {
       type        = "Service"
-      identifiers = ["budgets.amazonaws.com"]
+      identifiers = ["budgets.amazonaws.com", "cloudwatch.amazonaws.com"]
     }
 
     resources = [
