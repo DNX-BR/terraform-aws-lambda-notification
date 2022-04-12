@@ -21,7 +21,7 @@ variable org_name {
 variable "sns_topic_name" {
     description = "SNS Topic Name"
     type        = string
-    default     = "${var.org_name}-notification-topic"
+    default     = "notification-topic"
 }
 
 variable "audit_event_bus_arn" {
